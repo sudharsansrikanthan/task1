@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<p>
+age<input type="text" id="age">
+height(in cm)<input type="text" id="height">
+weight(in kg)<input type="text" id="weight">
+gender<input type="text" id="gender">
+</p>
+<p>
+<button onclick="calculate()">calculate calorie requirement</button>
+<div id="show"></div><br>
+<div id="show1"></div><br>
+<button onclick="track()">start tracking</button>
+<div id="show2"></div><br>
+<div id="show3"></div><br>
+<div id="show4"></div><br>
+<div id="show5"></div><br>
+</p>
+<p>
+<div id="show6"></div><br>
+<button onclick="track()">yes</button>
+</p>
+<script>
+var r ={};
+var c =0;
+function calculate() {
+      var h=document.getElementById("height").value;
+      var w=document.getElementById("weight").value;
+      var a=document.getElementById("age").value;
+      r=(parseFloat(w)*10)+(parseFloat(h)*6.25)-(parseFloat(a)*5);
+if(document.getElementById("gender").value=="male")
+    r=r+5;
+else if(document.getElementById("gender").value=="female")
+    r=r-161;  
+if(!isNaN(r))
+document.getElementById("show").innerHTML="the required daily intake of calories for you is "+r;
+document.getElementById("show1").innerHTML="do you want to have a track of your daily calories intake? If so then";
+}
+
+function track() {
+     var q=prompt("enter the food item:");
+     var p=prompt("enter the calories:");
+     c=parseFloat(c)+parseFloat(p);
+document.getElementById("show2").innerHTML="The total amount of calories consumed today is :"+c;
+     var t=parseFloat(r)-parseFloat(c);
+if(t>0)
+document.getElementById("show3").innerHTML="The remaining calorie consumption for today is :"+t;
+else if(t=0)
+document.getElementById("show4").innerHTML="Saturaion level reached";
+     else
+document.getElementById("show5").innerHTML="If this item is consumed then it the calorie level today is exceeded";
+document.getElementById("show6").innerHTML="Do you want to continue?";
+}
+</script>              
+</html>
